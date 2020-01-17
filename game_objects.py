@@ -1,5 +1,5 @@
 from engine import *
-
+import random
 
 all_sprites = pygame.sprite.Group()
 
@@ -143,7 +143,7 @@ class Player(pygame.sprite.Sprite):
         self.buttons = [0 for _ in range(4)]
 
     def dead(self):
-        text_screen('СМЭЭЭРТЬ')
+        text_screen(random.choice(DEATH_PHRASES))
         start_level(this_level())
 
     def wall_door_col(self):

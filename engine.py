@@ -40,7 +40,7 @@ loaded_level = load_game()
 
 
 def text_screen(text):
-    font = pygame.font.Font('data/fonts/YesevaOne-Regular.ttf', 33)
+    font = pygame.font.Font('data/fonts/YesevaOne-Regular.ttf', 31)
     intro_text = font.render(text, 1, (255, 255, 255))
     place = intro_text.get_rect(center=(WIDTH // 2, HEIGHT // 2))
     while True:
