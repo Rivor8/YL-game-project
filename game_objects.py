@@ -55,6 +55,7 @@ class WallDoor(pygame.sprite.Sprite):
         self.rect = self.image.get_rect().move(TILE_WIDTH * pos_x, TILE_HEIGHT * pos_y)
         self.num = num
         self.state = True
+        self.col = False
 
     def update(self):
         if player_group.sprites()[0].buttons[self.num] == 1:
@@ -67,6 +68,7 @@ class WallDoor(pygame.sprite.Sprite):
             self.state = True
             if self in dynamic_walls_group.sprites():
                 player_group.sprites()[0].wall_door[dynamic_walls_group.sprites().index(self)] = 1
+        self.col = pygame.sprite.spritecollideany(self, player_group)
 
 
 class Box(pygame.sprite.Sprite):
@@ -144,6 +146,12 @@ class Player(pygame.sprite.Sprite):
         text_screen('СМЭЭЭРТЬ')
         start_level(this_level())
 
+    def wall_door_col(self):
+        for el in dynamic_walls_group.sprites():
+            if el.col and self.wall_door[dynamic_walls_group.sprites().index(el)] == 1:
+                return 1
+        return 0
+
     def update(self):
         self.prevPos = self.rect
         if keys['UP']:
@@ -165,5 +173,5 @@ class Player(pygame.sprite.Sprite):
             self.speed[0] = 0
         self.rect = self.image.get_rect().move(self.rect.x + self.speed[0], self.rect.y + self.speed[1])
         if pygame.sprite.spritecollideany(self, walls_group) or (1 in self.stop) or \
-                (pygame.sprite.spritecollideany(self, dynamic_walls_group) and 1 in self.wall_door):
+                (pygame.sprite.spritecollideany(self, dynamic_walls_group) and self.wall_door_col()):
             self.rect = self.prevPos
