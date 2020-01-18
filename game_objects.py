@@ -130,25 +130,25 @@ class Entity(pygame.sprite.Sprite):
 class Enemy(pygame.sprite.Sprite):
     def __init__(self, type, pos_x, pos_y):
         super().__init__(enemy_group, all_sprites)
-        self.image = images['bad_dark_ghost1']
+        self.image = pygame.transform.scale(images['bad_dark_ghost1'], (TILE_WIDTH - 10, TILE_HEIGHT - 10))
         self.rect = self.image.get_rect().move(TILE_WIDTH * pos_x, TILE_HEIGHT * pos_y)
         self.type = type
-        self.speed = 3
+        self.speed = 2
         self.prevPos = self.rect
 
     def update(self):
         self.prevPos = self.rect
         if self.type == 1:
             if self.speed > 0:
-                self.image = images['bad_dark_ghost1']
+                self.image = pygame.transform.scale(images['bad_dark_ghost1'], (TILE_WIDTH - 10, TILE_HEIGHT - 10))
             else:
-                self.image = images['bad_dark_ghost2']
+                self.image = pygame.transform.scale(images['bad_dark_ghost2'], (TILE_WIDTH - 10, TILE_HEIGHT - 10))
             self.rect = self.image.get_rect().move(self.rect.x, self.rect.y + self.speed)
         elif self.type == 2:
             if self.speed > 0:
-                self.image = images['bad_dark_ghost3']
+                self.image = pygame.transform.scale(images['bad_dark_ghost3'], (TILE_WIDTH - 10, TILE_HEIGHT - 10))
             else:
-                self.image = images['bad_dark_ghost4']
+                self.image = pygame.transform.scale(images['bad_dark_ghost4'], (TILE_WIDTH - 10, TILE_HEIGHT - 10))
             self.rect = self.image.get_rect().move(self.rect.x + self.speed, self.rect.y)
 
         if pygame.sprite.spritecollideany(self, walls_group):
