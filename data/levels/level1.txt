@@ -6,7 +6,7 @@ qqqqqqqqqqqqqqqqqqqllll
 qqqqqqqqqqqqqqqqqqllllllll
 qqqqqqqqqq####################qqqqqqqq
 qqqqqqqqqq#....d..z.......k..###
-qqqqqqqqqq#z...k.............##
+qqqqqqqqqq#z.................##
 qqqqqqqqqq##.........#########
 qqqqqqqqqq#.z....z..##llllll
 qqqqqqqqqq#.......###lllll

@@ -98,8 +98,8 @@ def this_phrase():
     return loaded_phrase
 
 
-from game_objects import StaticTile, Player, SolidTile, Entity, LavaTile, Box, WallDoor,\
-    all_sprites, tiles_group, player_group, walls_group, box_group, entity_group, dynamic_walls_group
+from game_objects import StaticTile, Player, SolidTile, Entity, LavaTile, Box, WallDoor, Enemy,\
+    all_sprites, tiles_group, player_group, walls_group, box_group, entity_group, dynamic_walls_group, enemy_group
 
 
 def load_image(name, tile=False):
@@ -152,6 +152,15 @@ def generate_level(level):
             if level[y][x] == 'k':
                 StaticTile('floor', x, y)
                 Entity('key', x, y, 'key')
+
+            # Enemy
+            if level[y][x] == 'm':
+                StaticTile('floor', x, y)
+                Enemy(1, x, y)
+
+            if level[y][x] == 'M':
+                StaticTile('floor', x, y)
+                Enemy(2, x, y)
 
             # Wall doors
             if level[y][x] == '5':
@@ -210,10 +219,6 @@ def generate_level(level):
             if level[y][x] == 's':
                 StaticTile('floor', x, y)
                 StaticTile('strange_circle', x, y)
-
-            if level[y][x] == 'm':
-                StaticTile('floor', x, y)
-                StaticTile('bad_dark_ghost1', x, y)
 
 
 class Camera:

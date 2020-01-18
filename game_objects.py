@@ -6,6 +6,7 @@ all_sprites = pygame.sprite.Group()
 tiles_group = pygame.sprite.Group()
 walls_group = pygame.sprite.Group()
 player_group = pygame.sprite.Group()
+enemy_group = pygame.sprite.Group()
 box_group = pygame.sprite.Group()
 entity_group = pygame.sprite.Group()
 dynamic_walls_group = pygame.sprite.Group()
@@ -124,6 +125,38 @@ class Entity(pygame.sprite.Sprite):
         else:
             if self.type == 'button':
                 player_group.sprites()[0].buttons[self.key] = 0
+
+
+class Enemy(pygame.sprite.Sprite):
+    def __init__(self, type, pos_x, pos_y):
+        super().__init__(enemy_group, all_sprites)
+        self.image = images['bad_dark_ghost1']
+        self.rect = self.image.get_rect().move(TILE_WIDTH * pos_x, TILE_HEIGHT * pos_y)
+        self.type = type
+        self.speed = 3
+        self.prevPos = self.rect
+
+    def update(self):
+        self.prevPos = self.rect
+        if self.type == 1:
+            if self.speed > 0:
+                self.image = images['bad_dark_ghost1']
+            else:
+                self.image = images['bad_dark_ghost2']
+            self.rect = self.image.get_rect().move(self.rect.x, self.rect.y + self.speed)
+        elif self.type == 2:
+            if self.speed > 0:
+                self.image = images['bad_dark_ghost3']
+            else:
+                self.image = images['bad_dark_ghost4']
+            self.rect = self.image.get_rect().move(self.rect.x + self.speed, self.rect.y)
+
+        if pygame.sprite.spritecollideany(self, walls_group):
+            self.rect = self.prevPos
+            self.speed = -self.speed
+
+        if pygame.sprite.spritecollideany(self, player_group):
+            player_group.sprites()[0].dead()
 
 
 class Player(pygame.sprite.Sprite):

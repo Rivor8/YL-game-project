@@ -71,6 +71,7 @@ while running:
     entity_group.draw(screen)
     dynamic_walls_group.draw(screen)
     box_group.draw(screen)
+    enemy_group.draw(screen)
     player_group.draw(screen)
     all_sprites.update()
     camera.update(player_group.sprites()[0])
