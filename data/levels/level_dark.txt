@@ -8,11 +8,11 @@ qqqqqqlllllllllllllllll
 qqqqqqlllllllllllllllll
 qqqqqqlllllllllllllllll
 qqqqqqlllll#######lllllM#
-qqqq#Mlllll#.....#lllll
+qqqq#Mlllll#..c..#lllll
 qqqqqqlllll#.....#lllllM#
 qqqq#Mlllll#..@..#lllll
 qqqqqqlllll#..5..#lllllM#
-qqqq#Mlllll#..c..#lllll
+qqqq#Mlllll#.....#lllll
 qqqqqqlllll##000##lllllM#
 qqqqqqlllllllllllllllll
 qqqqqqlllllllllllllllll

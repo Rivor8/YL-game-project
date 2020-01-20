@@ -80,7 +80,15 @@ def start_level(level):
 
 def next_level():
     global loaded_level
-    return LEVEL_LIST[LEVEL_LIST.index(loaded_level) + 1]
+    if loaded_level == 'level9.txt':
+        config = cfg.ConfigParser()
+        config.read('data/saves/save.ini')
+        if int(config['GAME']['diamonds']) >= 91:
+            return LEVEL_LIST[LEVEL_LIST.index(loaded_level) + 2]
+        else:
+            return LEVEL_LIST[LEVEL_LIST.index(loaded_level) + 1]
+    else:
+        return LEVEL_LIST[LEVEL_LIST.index(loaded_level) + 1]
 
 
 def this_level():
@@ -113,6 +121,10 @@ def load_image(name, tile=False):
 
 
 def generate_level(level):
+    global loaded_level
+    if loaded_level == 'level_dark.txt':
+        pygame.mixer.music.load('data/music/dark.mp3')
+        pygame.mixer.music.play(-1)
     for y in range(len(level)):
         for x in range(len(level[y])):
             # Base
@@ -203,22 +215,38 @@ def generate_level(level):
                 StaticTile('floor', x, y)
                 WallDoor(x, y, 4)
 
-            # Other
-            if level[y][x] == 'g':
-                StaticTile('light_floor', x, y)
-                StaticTile('light_circle', x, y)
+            # End
+            if level[y][x] == 'c':
+                StaticTile('floor', x, y)
+                Entity('strange_circle', x, y, 'strange_circle')
 
-            if level[y][x] == 'v':
+            if level[y][x] == 'C':
+                StaticTile('light_floor', x, y)
+                Entity('light_circle', x, y, 'light_circle')
+
+            if level[y][x] == 'p':
+                StaticTile('light_floor', x, y)
+                SolidTile('wall_door_l1', x, y)
+
+            if level[y][x] == 'P':
                 StaticTile('light_floor', x, y)
                 SolidTile('wall_door_l2', x, y)
 
-            if level[y][x] == 'w':
+            if level[y][x] == 'u':
                 StaticTile('light_floor', x, y)
-                SolidTile('corner', x, y)
+                SolidTile('corner1', x, y)
 
-            if level[y][x] == 's':
-                StaticTile('floor', x, y)
-                StaticTile('strange_circle', x, y)
+            if level[y][x] == 'U':
+                StaticTile('light_floor', x, y)
+                SolidTile('corner2', x, y)
+
+            if level[y][x] == 'I':
+                StaticTile('light_floor', x, y)
+                SolidTile('corner3', x, y)
+
+            if level[y][x] == 'i':
+                StaticTile('light_floor', x, y)
+                SolidTile('corner4', x, y)
 
 
 class Camera:

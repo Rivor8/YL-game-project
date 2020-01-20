@@ -119,6 +119,15 @@ class Entity(pygame.sprite.Sprite):
             elif self.type == 'key':
                 player_group.sprites()[0].key = 1
                 self.kill()
+            elif self.type == 'strange_circle':
+                text_screen('Тут нет выхода')
+                text_screen('Нет ключа, нет двери')
+                text_screen('Нет возможности умереть')
+                text_screen('Нет смысла')
+                text_screen('Так и должно быть')
+                text_screen('Не было цели, лишь путь')
+                text_screen('Это конец')
+                pygame.quit()
         if pygame.sprite.spritecollideany(self, player_group) or pygame.sprite.spritecollideany(self, box_group):
             if self.type == 'button':
                 player_group.sprites()[0].buttons[self.key] = 1

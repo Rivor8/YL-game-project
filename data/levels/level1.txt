@@ -5,12 +5,12 @@ qqqqqqqqqqqllllllqqqq
 qqqqqqqqqqqqqqqqqqqllll
 qqqqqqqqqqqqqqqqqqllllllll
 qqqqqqqqqq####################qqqqqqqq
-qqqqqqqqqq#....d..z.......k..###
-qqqqqqqqqq#z.................##
+qqqqqqqqqq#.z..d..z....z..k..###
+qqqqqqqqqq#z...z.....z.......##
 qqqqqqqqqq##.........#########
 qqqqqqqqqq#.z....z..##llllll
 qqqqqqqqqq#.......###lllll
-qqqqqqqqqq#.........#lll
+qqqqqqqqqq#.....z...#lll
 qqqqqqqqqq#.z.......#
 qqqqqqqqqqq###..@..#
 qqqqqqqqqqqqq######
