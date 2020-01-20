@@ -110,6 +110,7 @@ class Entity(pygame.sprite.Sprite):
         if pygame.sprite.spritecollideany(self, player_group):
             if self.type == 'diamond':
                 player_group.sprites()[0].diamonds += 1
+                pygame.mixer.Sound('data/sounds/diamond.wav').play()
                 self.kill()
             elif self.type == 'door':
                 if player_group.sprites()[0].key == 1:
@@ -118,6 +119,7 @@ class Entity(pygame.sprite.Sprite):
                     start_level(next_level())
             elif self.type == 'key':
                 player_group.sprites()[0].key = 1
+                pygame.mixer.Sound('data/sounds/key.wav').play()
                 self.kill()
             elif self.type == 'strange_circle':
                 text_screen('Тут нет выхода')
@@ -126,6 +128,19 @@ class Entity(pygame.sprite.Sprite):
                 text_screen('Нет смысла')
                 text_screen('Так и должно быть')
                 text_screen('Не было цели, лишь путь')
+                text_screen('Это конец')
+                text_screen('.')
+                text_screen('.')
+                text_screen('.')
+                text_screen('')
+                pygame.quit()
+            elif self.type == 'light_circle':
+                text_screen('Тут нет выхода')
+                text_screen('Но была цель')
+                text_screen('Цель не умереть')
+                text_screen('Цель собрать все элементы')
+                text_screen('Так и должно быть')
+                text_screen('Я получил, что хотел')
                 text_screen('Это конец')
                 pygame.quit()
         if pygame.sprite.spritecollideany(self, player_group) or pygame.sprite.spritecollideany(self, box_group):
