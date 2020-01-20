@@ -125,12 +125,19 @@ def generate_level(level):
     if loaded_level == 'level_dark.txt':
         pygame.mixer.music.load('data/music/dark.mp3')
         pygame.mixer.music.play(-1)
+    elif loaded_level == 'level_light.txt':
+        pygame.mixer.music.load('data/music/light.mp3')
+        pygame.mixer.music.play(-1)
     for y in range(len(level)):
         for x in range(len(level[y])):
             # Base
             if level[y][x] == '@':
-                StaticTile('floor', x, y)
-                Player(x, y)
+                if loaded_level == 'level_light.txt':
+                    StaticTile('light_floor', x, y)
+                    Player(x, y)
+                else:
+                    StaticTile('floor', x, y)
+                    Player(x, y)
 
             if level[y][x] == '#':
                 SolidTile('wall', x, y)
@@ -154,8 +161,12 @@ def generate_level(level):
 
             # Entity
             if level[y][x] == 'z':
-                StaticTile('floor', x, y)
-                Entity('diamond', x, y, 'diamond')
+                if loaded_level == 'level_light.txt':
+                    StaticTile('light_floor', x, y)
+                    Entity('diamond', x, y, 'diamond')
+                else:
+                    StaticTile('floor', x, y)
+                    Entity('diamond', x, y, 'diamond')
 
             if level[y][x] == 'd':
                 StaticTile('floor', x, y)
