@@ -83,7 +83,7 @@ def next_level():
     if loaded_level == 'level9.txt':
         config = cfg.ConfigParser()
         config.read('data/saves/save.ini')
-        if int(config['GAME']['diamonds']) >= 91:
+        if int(config['GAME']['diamonds']) >= 77:
             return LEVEL_LIST[LEVEL_LIST.index(loaded_level) + 2]
         else:
             return LEVEL_LIST[LEVEL_LIST.index(loaded_level) + 1]
