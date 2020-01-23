@@ -6,6 +6,7 @@ qqqqqqqq
 qqqqqq############
 qqqqqq#z......m.z#
 qqqqqq#M..z#.....#
+qqqqqq#....#.....#
 qqqqqq#....#.mz..#
 qqqqqq#.@..###########qqqqq
 qqqqqq#..ll#qqq#zllll#
